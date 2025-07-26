@@ -9,3 +9,6 @@ build:
 
 lint:
 	npx eslint .
+
+dev:
+	npm run dev
