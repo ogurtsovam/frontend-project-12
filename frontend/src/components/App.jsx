@@ -4,20 +4,20 @@ import {
 import Header from './Header';
 import {
   LoginPage, PageNotFound, ChatPage, SignUpPage,
-} from '../pages/pages.js';
+} from '../Pages/pages.js';
 import getRoute from '../routes';
 
 const PrivateRoute = ({ children }) => {
   const authState = ((state) => state.auth);
   const location = useLocation();
   if (authState === undefined) {
-    return <h1>Loading</h1>;
+    return <Spinner />;
   }
 
   return (
     authState.token
       ? children
-      : <Navigate to={getRoute.loginPagePath()} state={{ from: location }} />
+      : <Navigate to={getRoute.loginPath()} state={{ from: location }} />
   );
 };
 
@@ -34,8 +34,8 @@ const App = () => (
             </PrivateRoute>
           )}
         />
-        <Route path={getRoute.loginPagePath()} element={<LoginPage />} />
-        <Route path={getRoute.signUpPagePath()} element={<SignUpPage />} />
+        <Route path={getRoute.loginPath()} element={<LoginPage />} />
+        <Route path={getRoute.singUpPath()} element={<SignUpPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
