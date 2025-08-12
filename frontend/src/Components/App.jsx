@@ -1,6 +1,7 @@
 import {
   Routes, Route, useLocation, Navigate,
 } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Header from './Header';
 import {
   LoginPage, PageNotFound, ChatPage, SignUpPage,
@@ -8,8 +9,9 @@ import {
 import getRoute from '../routes';
 
 const PrivateRoute = ({ children }) => {
-  const authState = ((state) => state.auth);
+  const authState = useSelector((state) => state.auth);
   const location = useLocation();
+
   if (authState === undefined) {
     return <h1>Loading</h1>;
   }

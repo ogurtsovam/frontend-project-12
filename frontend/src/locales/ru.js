@@ -33,6 +33,12 @@ export default {
       message: 'Но вы можете перейти',
       linkHome: 'на главную страницу',
     },
+    channels: {
+      title: 'Каналы',
+      channelControl: 'Управление каналом',
+      remove: 'Удалить',
+      rename: 'Переименовать',
+    },
     status: {
       loading: 'Загрузка',
     },
