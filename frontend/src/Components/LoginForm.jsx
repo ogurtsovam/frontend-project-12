@@ -6,9 +6,9 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
-import getRoute from '../routes';
+import getRoute from '../routes/routes';
 import actions from '../store/slices/actions';
-import { loginSchema } from '../validation';
+import { loginSchema } from '../validation/validation';
 
 const initialValues = {
   username: '',

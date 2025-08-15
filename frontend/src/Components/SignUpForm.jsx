@@ -7,8 +7,8 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import actions from '../store/slices/actions';
-import { signUpSchema } from '../validation';
-import getRoute from '../routes';
+import { signUpSchema } from '../validation/validation';
+import getRoute from '../routes/routes';
 
 const initialValues = {
   username: '',

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import channelsApi from '../../services/channelsApi';
 
 const initialState = {
   channels: {
@@ -16,6 +17,20 @@ const uiSlice = createSlice({
   initialState,
   reducers: {
     setActiveChannel,
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      channelsApi.endpoints.addChannel.matchFulfilled,
+      setActiveChannel,
+    );
+    builder.addMatcher(
+      channelsApi.endpoints.deleteChannel.matchFulfilled,
+      (state, { payload: { id } }) => {
+        if (state.channels.activeChannelId === id) {
+          state.channels.activeChannelId = state.channels.defaultChannelId;
+        }
+      },
+    );
   },
 });
 

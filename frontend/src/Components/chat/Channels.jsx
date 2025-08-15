@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsPlusSquare } from 'react-icons/bs';
 import Channel from './Channel';
-import { useGetChannelsQuery } from '../../services';
+import { useGetChannelsQuery } from '../../services/channelsApi';
 
 const Channels = () => {
   const { t } = useTranslation();
@@ -12,7 +12,7 @@ const Channels = () => {
     <div className="col-4 col-md-2 border-end px-0 bg-light flex-column h-100 d-flex">
       <div className="d-flex mt-1 justify-content-between mb-2 ps-4 pe-2 p-4">
         <b>{t('channels.title')}</b>
-        <button  type="button" className="p-0 text-primary btn btn-group-vertical">
+        <button type="button" className="p-0 text-primary btn btn-group-vertical">
           <BsPlusSquare size="20" />
           <span className="visually-hidden">+</span>
         </button>

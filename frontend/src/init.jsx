@@ -6,7 +6,7 @@ import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import App from './Components/App';
 import resources from './locales/index.js';
 import store from './store/index';
-import rollbarConfig from './rollbarConfig.js';
+import rollbarConfig from './rollbar/rollbarConfig.js';
 
 const init = async () => {
   const i18n = i18next.createInstance();

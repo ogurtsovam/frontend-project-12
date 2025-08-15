@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Container, Card } from 'react-bootstrap';
 import loginImg from '../assets/avatar.jpg';
 import LoginPageForm from '../Components/LoginForm';
-import getRoute from '../routes';
+import getRoute from '../routes/routes';
 
 const LoginPage = () => {
   const { t } = useTranslation();

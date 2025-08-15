@@ -6,14 +6,15 @@ import Header from './Header';
 import {
   LoginPage, PageNotFound, ChatPage, SignUpPage,
 } from '../pages/pages.js';
-import getRoute from '../routes';
+import getRoute from '../routes/routes';
+import Spinner from './Spinner';
 
 const PrivateRoute = ({ children }) => {
   const authState = useSelector((state) => state.auth);
   const location = useLocation();
 
   if (authState === undefined) {
-    return <h1>Loading</h1>;
+    return <Spinner />;
   }
 
   return (

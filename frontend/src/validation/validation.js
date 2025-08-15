@@ -25,6 +25,18 @@ const signUpSchema = Yup.object().shape({
     ),
 });
 
+const channelSchema = Yup.object({
+  name: Yup.string()
+    .trim()
+    .required('validation.required')
+    .min(3, 'validation.minmax')
+    .max(20, 'validation.minmax'),
+});
+
+const messageSchema = Yup.object().shape({
+  body: Yup.string().trim().required(),
+});
+
 export {
-   loginSchema, signUpSchema
+  messageSchema, loginSchema, signUpSchema, channelSchema
 };
