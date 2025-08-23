@@ -31,10 +31,10 @@ const LoginForm = () => {
       setAuthFailed(false)
       try {
         const res = await axios.post(routes.loginPath(), values)
-        const newToken = JSON.stringify(res.data.token)
+        const newToken = res.data.token
         dispatch(setAuth(newToken))
 
-        const { from } = location.state
+        const from = location.state?.from || '/';
         navigate(from)
       }
       catch (err) {
@@ -50,7 +50,7 @@ const LoginForm = () => {
   });
   return (
     <form className="col-12 col-md-6 mt-3 mt-md-0" onSubmit={formik.handleSubmit}>
-      <h1 className="text-center mb-4">{t('login.form.submit')}</h1>
+      <h1 className="text-center mb-4">{t('login.form.title')}</h1>
 
       <div className="form-floating mb-3">
         <input
@@ -89,7 +89,7 @@ const LoginForm = () => {
       </div>
 
       <button type="submit" className="w-100 mb-3 btn btn-outline-primary">
-        {t('login.form.submit')}
+        {t('login.form.title')}
       </button>
     </form>
   );

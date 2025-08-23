@@ -7,7 +7,7 @@ export default {
     },
     login: {
       form: {
-        submit: 'Войти',
+        title: 'Войти',
         username: 'Ваш ник',
         password: 'Пароль',
       },
@@ -18,7 +18,13 @@ export default {
       pageNotFound: 'Страница не найдена',
       link: 'Но вы можете перейти',
       toMainPage: 'на главную страницу', 
-    }
-
+    },
+    channels: {
+      title: 'Каналы',
+      channelControl: 'Управление каналом',
+      },
+    messages: {
+      
+      },  
   }
 };

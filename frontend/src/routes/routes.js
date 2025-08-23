@@ -6,5 +6,7 @@ export default {
   signupPage: `/signup`,
   signupPath: () => [api, 'signup'].join('/'),
   loginPath: () => [api, 'login'].join('/'),
+  channelsPath: () => [api, 'channels'].join('/'),
+  messagesPath: () => [api, 'messages'].join('/'),
   chatPath: () => api,
 }
