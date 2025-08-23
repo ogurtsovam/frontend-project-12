@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from 'react'
 import { useFormik } from 'formik'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from "react-redux"
+import { setAuth } from "../slices/authSlice"
 import {loginSchema} from '../validation/validation.js'
-import useAuth from '../hooks/useAuth.jsx'
 import routes from '../routes/routes.js';
 
 const LoginForm = () => {
@@ -14,10 +15,10 @@ const LoginForm = () => {
   const inputRef = useRef()
   const location = useLocation()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   useEffect(() => {
     inputRef.current.focus()
   }, [])
-  const auth = useAuth()
 
   const formik = useFormik({
     initialValues: {
@@ -30,8 +31,9 @@ const LoginForm = () => {
       setAuthFailed(false)
       try {
         const res = await axios.post(routes.loginPath(), values)
-        localStorage.setItem('userId', JSON.stringify(res.data))
-        auth.logIn()
+        const newToken = JSON.stringify(res.data.token)
+        dispatch(setAuth(newToken))
+
         const { from } = location.state
         navigate(from)
       }
@@ -92,7 +94,5 @@ const LoginForm = () => {
     </form>
   );
 };
-
-
 
 export default LoginForm;
