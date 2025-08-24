@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation, Link, Navigate } from 'react
 import { Button } from 'react-bootstrap'
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
+import { useTranslation } from 'react-i18next';
 import { clearAuth } from "../slices/authSlice"
 import { selectToken } from "../slices/authSlice"
 import ChatPage from '../pages/ChatPage';
@@ -21,6 +22,7 @@ const PrivateRoute = ({ children }) => {
 const AuthButton = () => {
   const location = useLocation()
   const dispatch = useDispatch()
+  const {t} = useTranslation()
   const token = useSelector(selectToken)
 
   const handleLogout = () => {
@@ -29,8 +31,8 @@ const AuthButton = () => {
 
   return (
     token !== null
-      ? <Button onClick={handleLogout}>Log out</Button>
-      : <Button as={Link} to="/login" state={{ from: location }}>Log in</Button>
+      ? <Button onClick={handleLogout}>{t('header.logOut')}</Button>
+      : <Button as={Link} to="/login" state={{ from: location }}>{t('header.logIn')}</Button>
   )
 }
 

@@ -22,9 +22,14 @@ export default {
     channels: {
       title: 'Каналы',
       channelControl: 'Управление каналом',
-      },
+    },
     messages: {
-      
-      },  
+      count_zero: '{{count}} сообщений',
+      count_one: '{{count}} сообщение',
+      count_few: '{{count}} сообщения',
+      count_many: '{{count}} сообщений',
+      count_other: '{{count}} сообщений',
+      send: 'Отправить',
+    },  
   }
 };

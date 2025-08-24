@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { setActive } from "../../slices/activeChannelSlice"
 import Spinner from '../Spinner.jsx';
 import Channel from './Channel.jsx';
-import { useGetChannelsQuery, useAddChannelMutation, useRemoveChannelMutation } from '../../api/channelApi.js';
+import { useGetChannelsQuery, useAddChannelMutation, useRemoveChannelMutation } from '../../api/channelsApi.js';
 
 const Channels = () => {
   const {t} = useTranslation()
@@ -17,7 +17,7 @@ const Channels = () => {
 
   useEffect(() => {
   if (channels?.length) {
-    const defaultChannel = channels.find(c => c.id === '1') || channels[0];
+    const defaultChannel = channels.find(c => c.id === '1');
     dispatch(setActive(defaultChannel));
   }
 }, [channels, dispatch]);

@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
 import routes from '../routes/routes.js';
 import customBaseQuery from './customBaseQuery.js';
 
@@ -9,15 +9,12 @@ export const channelsApi = createApi ({
   endpoints: builder => ({
     getChannels: builder.query({
       query: () => '',
-      providesTags: (result, error, arg) =>
-        result
-          ? [...result.map(({ id }) => ({ type: 'Channel', id })), 'Channel']
-          : ['Channel'],
+      providesTags: ['Channel'],
     }),
     addChannel: builder.mutation({
-      query: (task) => ({
+      query: (channel) => ({
         method: 'POST',
-        body: task,
+        body: channel,
       }),
       invalidatesTags: ['Channel'],
     }),
