@@ -1,4 +1,4 @@
-const Message = (message) => {
+const Message = ({message}) => {
   const { body, username} = message;
 
   return (

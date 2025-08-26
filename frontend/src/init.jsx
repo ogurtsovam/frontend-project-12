@@ -6,6 +6,7 @@ import App from './components/App';
 import resources from './locales/locales.js';
 import {store} from './store/store.js' 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 const init = async () => {
   const i18n = i18next.createInstance();

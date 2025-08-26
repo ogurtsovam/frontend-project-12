@@ -11,8 +11,6 @@ const Channel = ({channel}) => {
   const {t} = useTranslation();
   const { id, name, removable} = channel;
 
-  console.log(activeChannel)
-
   const handleChannelChange = () => {
     dispatch(setActive(channel))
   }

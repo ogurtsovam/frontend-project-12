@@ -30,6 +30,8 @@ export default {
       count_many: '{{count}} сообщений',
       count_other: '{{count}} сообщений',
       send: 'Отправить',
+      newMessage: 'Новое сообщение',
+      textInInput: 'Введите сообщение...',
     },  
   }
 };

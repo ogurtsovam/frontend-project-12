@@ -18,6 +18,14 @@ export const channelsApi = createApi ({
       }),
       invalidatesTags: ['Channel'],
     }),
+    renameChannel: builder.mutation({
+      query: ({ id, channel }) => ({
+        url: id,
+        method: 'PATCH',
+        body: channel,
+      }),
+      invalidatesTags: ['Message'],
+    }),
     removeChannel: builder.mutation({
       query: (id) => ({
         url: id,
@@ -28,4 +36,4 @@ export const channelsApi = createApi ({
   }),
 })
 
-export const { useAddChannelMutation, useGetChannelsQuery, useRemoveChannelMutation } = channelsApi;
+export const { useAddChannelMutation, useGetChannelsQuery, useRemoveChannelMutation, useEditChannelMutation } = channelsApi;

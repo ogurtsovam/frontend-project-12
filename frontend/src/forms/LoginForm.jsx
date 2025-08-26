@@ -27,7 +27,6 @@ const LoginForm = () => {
     },
     validationSchema: loginSchema,
     onSubmit: async (values) => {
-      console.log(values);
       setAuthFailed(false)
       try {
         const res = await axios.post(routes.loginPath(), values)

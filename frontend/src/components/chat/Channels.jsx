@@ -13,8 +13,6 @@ const Channels = () => {
   const dispatch = useDispatch()
   const { data: channels, isLoading } = useGetChannelsQuery()
 
-  console.log(channels)
-
   useEffect(() => {
   if (channels?.length) {
     const defaultChannel = channels.find(c => c.id === '1');
