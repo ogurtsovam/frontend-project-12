@@ -1,7 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import routes from '../routes/routes.js';
 import customBaseQuery from './customBaseQuery.js';
-import { socket } from './sockets/sockets.js'
+import { socket } from './sockets/sockets.js';
 
 export const messagesApi = createApi ({
   reducerPath: 'messages',
@@ -72,4 +72,4 @@ export const messagesApi = createApi ({
   }),
 })
 
-export const { useGetMessagesQuery, useAddMessageMutation, useRemoveMessageMutation, useEditMessageMutation } = messagesApi;
+export const { useGetMessagesQuery, useAddMessageMutation, useRemoveMessageMutation, useRenameMessageMutation } = messagesApi;

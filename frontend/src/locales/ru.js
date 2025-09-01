@@ -32,6 +32,23 @@ export default {
       send: 'Отправить',
       newMessage: 'Новое сообщение',
       textInInput: 'Введите сообщение...',
-    },  
+    }, 
+    modals: {
+      addTitle: 'Добавить канал',
+      renameTitle: 'Переименовать канал',
+      channelName: 'Имя канала',
+      cancel: 'Отменить',
+      send: 'Отправить',
+      deleteTitle: 'Удалить канал',
+      confirmation: 'Уверены?',
+      delete: 'Удалить',
+      rename: 'Переименовать',
+    },
+    errors: {
+      tooShort: 'От 3 до 20 символов',
+      tooLong: 'От 3 до 20 символов',
+      required: 'Обязательное поле',
+      notOneOf: 'Должно быть уникальным',
+    }
   }
 };

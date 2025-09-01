@@ -18,6 +18,7 @@ const MessageForm = () => {
       body: value,
       channelId: activeChannel.id,
       username: 'admin',})
+    setText('')
   }
 
   if (isAddingMessage) {

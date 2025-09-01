@@ -6,4 +6,12 @@ const loginSchema = yup.object().shape({
     password: yup.string().required('Required'),
  });
 
-export {loginSchema};
+const validateChannels = (channels, t) => {
+  return yup.string()
+  .min(3, t('errors.tooShort'))
+  .max(20, t('errors.tooLong'))
+  .required(t('errors.required'))
+  .notOneOf(channels, t('errors.notOneOf'))
+}
+
+export { loginSchema, validateChannels };
