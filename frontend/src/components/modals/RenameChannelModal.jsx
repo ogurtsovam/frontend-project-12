@@ -1,16 +1,19 @@
 import { useRef, useEffect } from "react";
 import { useFormik } from 'formik'
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { Modal, FormGroup, FormControl } from 'react-bootstrap'
 import * as yup from 'yup'; 
 
 import { validateChannels } from "../../validation/validation";
 import { useGetChannelsQuery } from '../../api/channelsApi.js';
 import { useRenameChannelMutation } from "../../api/channelsApi.js";
+import { setActive } from "../../slices/activeChannelSlice";
 
 const RenameChannelModal = ({show, updateShowRename, channel}) => {
   const inputRef = useRef(null);
   const {t} = useTranslation()
+  const dispatch = useDispatch()
   const { data: channels, isLoading: isGettingChannels } = useGetChannelsQuery()
   const [renameChannel, { error: renameChannelError, isLoading: isRenamingChannels}] = useRenameChannelMutation();
 
@@ -27,13 +30,18 @@ const RenameChannelModal = ({show, updateShowRename, channel}) => {
       validationSchema: yup.object({
       channel: validateChannels(channels, t),
     }),
-     onSubmit: values => {
-      renameChannel({
+      onSubmit: async (values) => {
+      try {
+        const newChannel = await renameChannel({
         id: channel.id,
         channel: { name: values.channel }
-      });
-      formik.resetForm()
-      updateShowRename()
+        }).unwrap();
+        dispatch(setActive(newChannel));
+        updateShowRename()
+        formik.resetForm();
+      } catch (e) {
+        console.error("Ошибка при добавлении канала", e);
+      }
      },
    });
 return (

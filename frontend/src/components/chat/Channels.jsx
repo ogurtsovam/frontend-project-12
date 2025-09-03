@@ -1,32 +1,36 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from 'react';
 
 import { setActive } from "../../slices/activeChannelSlice"
 import Spinner from '../Spinner.jsx';
 import Channel from './Channel.jsx';
-import { useGetChannelsQuery, useAddChannelMutation } from '../../api/channelsApi.js';
-import AddChannelModal from '../modals/addChannelModal.jsx';
+import { useGetChannelsQuery, useAddChannelMutation} from '../../api/channelsApi.js';
+import AddChannelModal from '../modals/AddChannelModal.jsx';
+import { selectActiveChannel } from '../../slices/activeChannelSlice';
 
 const Channels = () => {
   const {t} = useTranslation()
   const dispatch = useDispatch()
   const { data: channels, isLoading: isGettingChannels } = useGetChannelsQuery()
   const [addChannel, { error: addChannelError, isLoading: isAddingChannels}] = useAddChannelMutation();
+  const activeChannel = useSelector(selectActiveChannel);
 
-  useEffect(() => {
-  if (channels?.length) {
-    const defaultChannel = channels.find(c => c.id === '1');
-    dispatch(setActive(defaultChannel));
+useEffect(() => {
+  if (!isGettingChannels && channels) {
+    const stillExists = channels.some((c) => c.id === activeChannel?.id);
+    if (!stillExists) {
+      const defaultChannel = channels.find((c) => c.name === 'general');
+      dispatch(setActive(defaultChannel));
+    }
   }
-}, [channels, dispatch]);
+}, [channels]);
+
 
   const [showAdd, updateShowAdd] = useState(false)
 
-  const handleAdd = (value) => {
-    addChannel(value)
-  }
+  const handleAdd = (value) => addChannel(value);
 
   if (isGettingChannels || isAddingChannels) {
     return <Spinner/>
