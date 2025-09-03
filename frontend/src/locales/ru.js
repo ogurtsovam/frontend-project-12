@@ -49,6 +49,17 @@ export default {
       tooLong: 'От 3 до 20 символов',
       required: 'Обязательное поле',
       notOneOf: 'Должно быть уникальным',
+      passwordsMustMatch: 'Пароли должны совпадать',
+      minSymbols: 'Не менее 6 символов',
+      usernameOrPasswordIsIncorrect: 'Неверные имя пользователя или пароль',
+    },
+    signup: {
+      title: 'Регистрация',
+      username: 'Имя пользователя',
+      password: 'Пароль',
+      confirmPassword: 'Подтвердите пароль',
+      submit: 'Зарегистрироваться', 
+      userExists: 'Имя уже существует',
     }
   }
 };

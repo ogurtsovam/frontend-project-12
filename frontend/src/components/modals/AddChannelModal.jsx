@@ -27,7 +27,7 @@ const AddChannelModal = ({handleAdd, show, updateShowAdd, channels}) => { const 
     onSubmit: async (values) => { 
       try { 
         const newChannel = await handleAdd({ name: values.channel }).unwrap();
-        dispatch(setActive(newChannel)); 
+        dispatch(setActive(newChannel));
         updateShowAdd();
         formik.resetForm(); 
       } catch (e) {

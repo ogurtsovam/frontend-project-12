@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from "react-redux"
 import { setAuth } from "../slices/authSlice"
-import {loginSchema} from '../validation/validation.js'
+import {getLoginSchema} from '../validation/validation.js'
 import routes from '../routes/routes.js';
 
 const LoginForm = () => {
@@ -25,12 +25,12 @@ const LoginForm = () => {
       username: "",
       password: "",
     },
-    validationSchema: loginSchema,
+    validationSchema: getLoginSchema(t),
     onSubmit: async (values) => {
       setAuthFailed(false)
       try {
         const res = await axios.post(routes.loginPath(), values)
-        const newToken = res.data.token
+        const newToken = res.data
         dispatch(setAuth(newToken))
 
         const from = location.state?.from || '/';
@@ -57,7 +57,7 @@ const LoginForm = () => {
           autoComplete="username"
           placeholder="Ваш ник"
           id="username"
-          className="form-control"
+          className={`form-control ${formik.touched.username && formik.errors.username ? 'is-invalid' : ''}`}
           ref={inputRef}
           value={formik.values.username}
           onChange={formik.handleChange}
@@ -76,7 +76,7 @@ const LoginForm = () => {
           placeholder="Пароль"
           type="password"
           id="password"
-          className="form-control"
+          className={`form-control ${formik.touched.password && formik.errors.password ? 'is-invalid' : ''}`}
           value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}

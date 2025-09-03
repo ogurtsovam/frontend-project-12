@@ -1,10 +1,18 @@
 import * as yup from 'yup';
 
-const loginSchema = yup.object().shape({
-    username: yup.string()
-     .required('Required'),
-    password: yup.string().required('Required'),
- });
+const getLoginSchema = (t) => yup.object().shape({
+  username: yup.string().required(t('errors.required')),
+  password: yup.string().required(t('errors.required')),
+});
+
+const getSignupSchema = (t) => yup.object().shape({
+  username: yup.string().min(3, t('errors.tooShort')).max(20, t('errors.tooLong')).required(t('errors.required')),
+  password: yup.string().min(6, t('errors.minSymbols')).required(t('errors.required')),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), null], t('errors.passwordsMustMatch'))
+    .required(t('errors.required')),
+});
 
 const validateChannels = (channels, t) => {
   return yup.string()
@@ -14,4 +22,4 @@ const validateChannels = (channels, t) => {
   .notOneOf(channels, t('errors.notOneOf'))
 }
 
-export { loginSchema, validateChannels };
+export { getLoginSchema, validateChannels, getSignupSchema};

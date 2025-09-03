@@ -4,11 +4,13 @@ import { useState } from "react";
 
 import { selectActiveChannel } from "../slices/activeChannelSlice"
 import { useAddMessageMutation } from '../api/messagesApi.js';
+import { selectUsername } from "../slices/authSlice.js";
 
 const MessageForm = () => {
   const {t} = useTranslation()
   const [text, setText] = useState('');
 
+  const username = useSelector(selectUsername)
   const activeChannel = useSelector(selectActiveChannel);
   const [addMessage, { error: addMessageError, isLoading: isAddingMessage }] = useAddMessageMutation();
 
@@ -17,7 +19,7 @@ const MessageForm = () => {
     addMessage({
       body: value,
       channelId: activeChannel.id,
-      username: 'admin',})
+      username: username,})
     setText('')
   }
 

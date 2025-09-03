@@ -9,6 +9,7 @@ import ChatPage from '../pages/ChatPage';
 import LoginPage from '../pages/LoginPage';
 import PageNotFound from '../pages/PageNotFound';
 import Header from './Header.jsx';
+import SignupPage from '../pages/SignupPage.jsx';
 
 const PrivateRoute = ({ children }) => {
   const token = useSelector(selectToken)
@@ -19,27 +20,9 @@ const PrivateRoute = ({ children }) => {
   )
 }
 
-const AuthButton = () => {
-  const location = useLocation()
-  const dispatch = useDispatch()
-  const {t} = useTranslation()
-  const token = useSelector(selectToken)
-
-  const handleLogout = () => {
-    dispatch(clearAuth())
-  }
-
-  return (
-    token !== null
-      ? <Button onClick={handleLogout}>{t('header.logOut')}</Button>
-      : <Button as={Link} to="/login" state={{ from: location }}>{t('header.logIn')}</Button>
-  )
-}
-
 function App() {
   return (
     <BrowserRouter>
-        <Header authButton={<AuthButton/>}/>
       <Routes>
         <Route
             path="/"
@@ -51,7 +34,7 @@ function App() {
           />
         <Route path='/login' element={<LoginPage />} />
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/signup" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
       </Routes>
     </BrowserRouter>
   );
