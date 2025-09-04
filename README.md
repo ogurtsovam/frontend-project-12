@@ -3,7 +3,9 @@
 
 # Cat Chat
 
-![Cat Picture](frontend/src/assets/wowCat.jpg)
+<p align="center">
+  <img src="frontend/src/assets/wowCat.jpg" width="250" height="auto">
+</p>
 
 ### Description
 
