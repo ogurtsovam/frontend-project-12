@@ -3,7 +3,7 @@
 
 # Cat Chat
 
-![Cat Picture](frontend/src/assets/wowCat.png)
+![Cat Picture](frontend/src/assets/wowCat.jpg)
 
 ### Description
 
