@@ -1,7 +1,9 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/ogurtsovam/frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/ogurtsovam/frontend-project-12/actions)
 
-### Cat Chat
+# Cat Chat
+
+![Cat Picture](frontend/src/assets/wowCat.png)
 
 ### Description
 
