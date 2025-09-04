@@ -56,6 +56,7 @@ export default {
       removeChannelError: 'Ошибка при удалении канала',
       renameChannelError: 'Ошибка при переименовании канала',
       addChannelError: 'Ошибка при добавлении канала',
+      badName: 'Плохое название',
 
     },
     signup: {

@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from "react-redux"
 import { toast } from 'react-toastify';
+import leoProfanity from 'leo-profanity';
 
 import { setAuth } from "../slices/authSlice"
 import routes from "../routes/routes";
@@ -28,10 +29,14 @@ const SignupForm = () => {
       confirmPassword: "",
     },
     validationSchema: getSignupSchema(t),
-    onSubmit: async (values, ) => {
+    onSubmit: async (values) => {
       try {
+        if (leoProfanity.check(values.username)) {
+          toast.error(t('errors.badName'))
+          return;
+        }
         const res = await axios.post(routes.signupPath(), {username: values.username, password: values.password})
-         const { token, username } = res.data;
+        const { token, username } = res.data;
         dispatch(setAuth({ token, username }))
 
         const from = location.state?.from || '/';

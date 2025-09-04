@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux"
 import { useState } from "react";
+import leoProfanity from 'leo-profanity';
 
 import { selectActiveChannel } from "../slices/activeChannelSlice"
 import { useAddMessageMutation } from '../api/messagesApi.js';
@@ -16,8 +17,9 @@ const MessageForm = () => {
 
   const handleSubmit = (event, value) => {
     event.preventDefault();
+    const cleanMessage = leoProfanity.clean(value);
     addMessage({
-      body: value,
+      body: cleanMessage,
       channelId: activeChannel.id,
       username: username,})
     setText('')

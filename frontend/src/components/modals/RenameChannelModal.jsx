@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { Modal, FormGroup, FormControl } from 'react-bootstrap'
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
+import leoProfanity from 'leo-profanity';
 
 import { validateChannels } from "../../validation/validation";
 import { useGetChannelsQuery } from '../../api/channelsApi.js';
@@ -33,6 +34,10 @@ const RenameChannelModal = ({show, updateShowRename, channel}) => {
     }),
       onSubmit: async (values) => {
       try {
+        if (leoProfanity.check(values.channel)) {
+          toast.error(t('errors.badName'))
+          return;
+        }
         const newChannel = await renameChannel({
         id: channel.id,
         channel: { name: values.channel }
@@ -45,7 +50,7 @@ const RenameChannelModal = ({show, updateShowRename, channel}) => {
         if (!err.response) {
           toast.error(t('errors.connectionError'));
         }
-        toast.error(t('errors.renameChannelError'), e);
+        toast.error(t('errors.renameChannelError'));
       }
      },
    });
@@ -80,7 +85,7 @@ return (
           <button className="btn btn-primary" type="button" value="cancel" onClick={updateShowRename}>
             {t('modals.cancel')}
           </button>
-          <button className="btn btn-primary" disabled={isRenamingChannels} type="submit" value="submit">
+          <button className="btn btn-primary" type="submit" value="submit">
             {t('modals.send')}
           </button>
         </Modal.Footer>

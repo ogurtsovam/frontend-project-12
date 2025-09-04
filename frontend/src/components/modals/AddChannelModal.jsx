@@ -5,11 +5,13 @@ import { useDispatch } from "react-redux";
 import { Modal, FormGroup, FormControl } from 'react-bootstrap'
 import * as yup from 'yup'; 
 import { toast } from 'react-toastify';
+import leoProfanity from 'leo-profanity';
 
 import { validateChannels } from "../../validation/validation";
 import { setActive } from "../../slices/activeChannelSlice";
 
-const AddChannelModal = ({handleAdd, show, updateShowAdd, channels}) => { const inputRef = useRef(null); 
+const AddChannelModal = ({handleAdd, show, updateShowAdd, channels}) => {
+  const inputRef = useRef(null); 
   const {t} = useTranslation() 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -27,6 +29,10 @@ const AddChannelModal = ({handleAdd, show, updateShowAdd, channels}) => { const 
      }),
     onSubmit: async ( values) => { 
       try {
+        if (leoProfanity.check(values.channel)) {
+          toast.error(t('errors.badName'))
+          return;
+        }
         const newChannel = await handleAdd({ name: values.channel }).unwrap();
         dispatch(setActive(newChannel));
         toast.success(t('toast.channelCreated'))
