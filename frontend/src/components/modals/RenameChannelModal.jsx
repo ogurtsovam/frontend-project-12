@@ -3,7 +3,8 @@ import { useFormik } from 'formik'
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { Modal, FormGroup, FormControl } from 'react-bootstrap'
-import * as yup from 'yup'; 
+import * as yup from 'yup';
+import { toast } from 'react-toastify';
 
 import { validateChannels } from "../../validation/validation";
 import { useGetChannelsQuery } from '../../api/channelsApi.js';
@@ -37,10 +38,14 @@ const RenameChannelModal = ({show, updateShowRename, channel}) => {
         channel: { name: values.channel }
         }).unwrap();
         dispatch(setActive(newChannel));
-        updateShowRename()
+        toast.success(t('toast.channelRenamed'));
+        updateShowRename();
         formik.resetForm();
-      } catch (e) {
-        console.error("Ошибка при добавлении канала", e);
+      } catch (err) {
+        if (!err.response) {
+          toast.error(t('errors.connectionError'));
+        }
+        toast.error(t('errors.renameChannelError'), e);
       }
      },
    });
@@ -75,7 +80,7 @@ return (
           <button className="btn btn-primary" type="button" value="cancel" onClick={updateShowRename}>
             {t('modals.cancel')}
           </button>
-          <button className="btn btn-primary" type="submit" value="submit">
+          <button className="btn btn-primary" disabled={isRenamingChannels} type="submit" value="submit">
             {t('modals.send')}
           </button>
         </Modal.Footer>

@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { Modal, FormGroup, FormControl } from 'react-bootstrap'
 import * as yup from 'yup'; 
+import { toast } from 'react-toastify';
 
 import { validateChannels } from "../../validation/validation";
 import { setActive } from "../../slices/activeChannelSlice";
@@ -24,14 +25,18 @@ const AddChannelModal = ({handleAdd, show, updateShowAdd, channels}) => { const 
     validationSchema: yup.object({ 
       channel: validateChannels(channels, t),
      }),
-    onSubmit: async (values) => { 
-      try { 
+    onSubmit: async ( values) => { 
+      try {
         const newChannel = await handleAdd({ name: values.channel }).unwrap();
         dispatch(setActive(newChannel));
+        toast.success(t('toast.channelCreated'))
         updateShowAdd();
         formik.resetForm(); 
-      } catch (e) {
-        console.error("Ошибка при добавлении канала", e);
+      } catch (err) {
+        if (!err.response) {
+          toast.error(t('errors.connectionError'));
+        }
+        toast.error(t('errors.addChannelError'));
       }
     },
   });

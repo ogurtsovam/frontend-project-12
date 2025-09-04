@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from "react-redux"
+import { toast } from 'react-toastify';
 
 import { setAuth } from "../slices/authSlice"
 import routes from "../routes/routes";
@@ -46,7 +47,7 @@ const SignupForm = () => {
           formik.setFieldError('username', t('signup.userExists'));
           return;
         }
-        throw err
+        toast.error(t('errors.connectionError'))
       }
     },
   });

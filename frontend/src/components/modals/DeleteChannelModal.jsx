@@ -1,25 +1,27 @@
-import { useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Modal, FormGroup, FormControl } from 'react-bootstrap'
+import { toast } from 'react-toastify';
 
 import { useRemoveChannelMutation } from "../../api/channelsApi.js";
 
 const DeleteChannelModal = ({ show, updateShowRemove, channel}) => {
-  const inputRef = useRef(null);
   const {t} = useTranslation()
-
   const [removeChannel, { error: removeChannelError, isLoading: isRemovingChannels}] = useRemoveChannelMutation();
 
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    await removeChannel(channel.id).unwrap();
+    toast.success(t('toast.channelRemoved'));
+    updateShowRemove();
+  } catch (err) {
+    if (!err.response) {
+      toast.error(t('errors.connectionError'));
+    } else {
+      toast.error(t('errors.removeChannelError'));
     }
-  }, [show]);
-
-  const handleSubmit = () => {
-    removeChannel(channel.id)
-    updateShowRemove()
   }
+};
 return (
     <Modal show={show} onHide={updateShowRemove}>
       <form onSubmit={handleSubmit}>

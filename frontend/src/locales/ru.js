@@ -52,6 +52,11 @@ export default {
       passwordsMustMatch: 'Пароли должны совпадать',
       minSymbols: 'Не менее 6 символов',
       usernameOrPasswordIsIncorrect: 'Неверные имя пользователя или пароль',
+      connectionError: 'Ошибка соединения',
+      removeChannelError: 'Ошибка при удалении канала',
+      renameChannelError: 'Ошибка при переименовании канала',
+      addChannelError: 'Ошибка при добавлении канала',
+
     },
     signup: {
       title: 'Регистрация',
@@ -59,7 +64,12 @@ export default {
       password: 'Пароль',
       confirmPassword: 'Подтвердите пароль',
       submit: 'Зарегистрироваться', 
-      userExists: 'Имя уже существует',
+      userExists: 'Такой пользователь уже существует',
+    },
+    toast: {
+      channelCreated: 'Канал создан',
+      channelRemoved: 'Канал удалён',
+      channelRenamed: 'Канал переименован',
     }
   }
 };

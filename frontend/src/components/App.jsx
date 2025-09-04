@@ -1,14 +1,11 @@
 import { BrowserRouter, Routes, Route, useLocation, Link, Navigate } from 'react-router-dom';
-import { Button } from 'react-bootstrap'
 import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux"
-import { useTranslation } from 'react-i18next';
-import { clearAuth } from "../slices/authSlice"
+import { ToastContainer } from 'react-toastify';
+
 import { selectToken } from "../slices/authSlice"
 import ChatPage from '../pages/ChatPage';
 import LoginPage from '../pages/LoginPage';
 import PageNotFound from '../pages/PageNotFound';
-import Header from './Header.jsx';
 import SignupPage from '../pages/SignupPage.jsx';
 
 const PrivateRoute = ({ children }) => {
@@ -36,6 +33,7 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
         <Route path="/signup" element={<SignupPage />} />
       </Routes>
+      <ToastContainer/>
     </BrowserRouter>
   );
 }

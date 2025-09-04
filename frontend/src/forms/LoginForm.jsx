@@ -5,6 +5,8 @@ import { useFormik } from 'formik'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from "react-redux"
+import { toast } from 'react-toastify';
+
 import { setAuth } from "../slices/authSlice"
 import {getLoginSchema} from '../validation/validation.js'
 import routes from '../routes/routes.js';
@@ -38,12 +40,17 @@ const LoginForm = () => {
       }
       catch (err) {
         formik.setSubmitting(false)
-        if (err.isAxiosError && err.response.status === 401) {
+        if (err.response.status === 401) {
+          formik.setFieldError('username', ' ');
+          formik.setFieldError('password', t('errors.usernameOrPasswordIsIncorrect'));
+          return;
+        }
+        if (err.isAxiosError ) {
           setAuthFailed(true)
           inputRef.current.select()
           return
         }
-        throw err
+        toast.error(t('errors.connectionError'))
       }
     },
   });
