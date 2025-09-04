@@ -15,7 +15,7 @@ const LoginPage = () => {
      <div className="h-100" id="chat">
        <div className="d-flex flex-column h-100">
         <Header authButton={<AuthButton/>}/>
-        <div className="container-fluid h-100">
+        <div className="container-fluid h-100 mt-5">
           <div className='row justify-content-center align-content-center'>
            <div className='col-12 col-md-8 col-xxl-6'>
              <div className='card shadow-sm'>
