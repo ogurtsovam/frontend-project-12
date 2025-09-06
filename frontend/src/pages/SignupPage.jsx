@@ -1,10 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LoginForm from '../forms/LoginForm'
-import image from '../assets/susCat.jpg'
-import routes from '../routes/routes'
 
+import image from '../assets/susCat.jpg'
 import SignupForm from '../forms/SignupForm'
 import AuthButton from '../components/AuthButton';
 import Header from '../components/Header';
