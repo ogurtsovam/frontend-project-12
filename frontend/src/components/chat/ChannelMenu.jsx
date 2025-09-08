@@ -11,7 +11,7 @@ const ChannelMenu = ({classForButtons, modals, channel }) => {
   return (
   <Dropdown as={ButtonGroup} className="flex-grow-0" align="end">
     <Dropdown.Toggle split variant="" id="dropdown-split-basic" aria-expanded="false" className={classForButtons}>
-      <span className="visually-hidden">{t('channel.channelControl')}</span>
+      <span className="visually-hidden">{t('channels.channelControl')}</span>
     </Dropdown.Toggle>
 
     <Dropdown.Menu>

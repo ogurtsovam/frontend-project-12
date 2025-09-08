@@ -32,7 +32,6 @@ export default {
       send: 'Отправить',
       newMessage: 'Новое сообщение',
       textInInput: 'Введите сообщение...',
-      controlChannel: 'Управление каналом',
     }, 
     modals: {
       addTitle: 'Добавить канал',
