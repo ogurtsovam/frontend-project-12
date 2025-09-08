@@ -13,7 +13,7 @@ const MessageForm = () => {
 
   const username = useSelector(selectUsername)
   const activeChannel = useSelector(selectActiveChannel);
-  const [addMessage, { error: addMessageError, isLoading: isAddingMessage }] = useAddMessageMutation();
+  const [addMessage, { isLoading: isAddingMessage }] = useAddMessageMutation();
 
   const handleSubmit = (event, value) => {
     event.preventDefault();

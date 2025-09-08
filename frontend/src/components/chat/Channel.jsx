@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 import { useState } from 'react';
@@ -10,7 +9,6 @@ import ChannelMenu from './ChannelMenu';
 const Channel = ({channel}) => {
   const dispatch = useDispatch()
   const activeChannel = useSelector(selectActiveChannel)
-  const {t} = useTranslation();
   const { id, name, removable} = channel;
 
   const handleChannelChange = () => {

@@ -1,7 +1,7 @@
 export default {
   translation: {
     header: {
-      nav: 'Cat Chat',
+      nav: 'Hexlet Chat',
       logIn: 'Войти',
       logOut: 'Выйти',
     },

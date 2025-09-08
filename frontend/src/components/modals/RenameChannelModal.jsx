@@ -16,8 +16,8 @@ const RenameChannelModal = ({show, updateShowRename, channel}) => {
   const inputRef = useRef(null);
   const {t} = useTranslation()
   const dispatch = useDispatch()
-  const { data: channels, isLoading: isGettingChannels } = useGetChannelsQuery()
-  const [renameChannel, { error: renameChannelError, isLoading: isRenamingChannels}] = useRenameChannelMutation();
+  const { data: channels } = useGetChannelsQuery()
+  const [renameChannel] = useRenameChannelMutation();
 
   useEffect(() => {
     if (inputRef.current) {

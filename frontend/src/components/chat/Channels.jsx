@@ -14,7 +14,7 @@ const Channels = () => {
   const {t} = useTranslation()
   const dispatch = useDispatch()
   const { data: channels, isLoading: isGettingChannels } = useGetChannelsQuery()
-  const [addChannel, { error: addChannelError, isLoading: isAddingChannels}] = useAddChannelMutation();
+  const [addChannel, { isLoading: isAddingChannels}] = useAddChannelMutation();
   const activeChannel = useSelector(selectActiveChannel);
 
 useEffect(() => {

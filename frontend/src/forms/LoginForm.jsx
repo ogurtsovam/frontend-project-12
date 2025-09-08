@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { useFormik } from 'formik'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,6 @@ import {getLoginSchema} from '../validation/validation.js'
 import routes from '../routes/routes.js';
 
 const LoginForm = () => {
-  const [authFailed, setAuthFailed] = useState(false)
   const { t } = useTranslation();
   const inputRef = useRef()
   const location = useLocation()
@@ -29,7 +28,6 @@ const LoginForm = () => {
     },
     validationSchema: getLoginSchema(t),
     onSubmit: async (values) => {
-      setAuthFailed(false)
       try {
         const res = await axios.post(routes.loginPath(), values)
         const newToken = res.data
@@ -46,7 +44,6 @@ const LoginForm = () => {
           return;
         }
         if (err.isAxiosError ) {
-          setAuthFailed(true)
           inputRef.current.select()
           return
         }

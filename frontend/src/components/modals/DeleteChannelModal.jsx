@@ -6,7 +6,7 @@ import { useRemoveChannelMutation } from "../../api/channelsApi.js";
 
 const DeleteChannelModal = ({ show, updateShowRemove, channel}) => {
   const {t} = useTranslation()
-  const [removeChannel, { error: removeChannelError, isLoading: isRemovingChannels}] = useRemoveChannelMutation();
+  const [removeChannel] = useRemoveChannelMutation();
 
   const handleSubmit = async (e) => {
   e.preventDefault();

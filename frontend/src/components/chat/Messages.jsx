@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import Message from "./Message";
 import Spinner from '../Spinner.jsx';
 import { selectActiveChannel } from "../../slices/activeChannelSlice"
-import { useAddMessageMutation, useGetMessagesQuery, useRemoveMessageMutation } from '../../api/messagesApi.js';
+import { useGetMessagesQuery } from '../../api/messagesApi.js';
 import MessageForm from "../../forms/MessageForm.jsx";
 import image from '../../assets/playCat.jpg'
 
