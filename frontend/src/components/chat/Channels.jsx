@@ -1,20 +1,20 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 
-import { setActive } from "../../slices/activeChannelSlice"
+import { setActive } from '../../slices/activeChannelSlice'
 import Spinner from '../Spinner.jsx'
 import Channel from './Channel.jsx'
-import { useGetChannelsQuery, useAddChannelMutation} from '../../api/channelsApi.js'
+import { useGetChannelsQuery, useAddChannelMutation } from '../../api/channelsApi.js'
 import AddChannelModal from '../modals/AddChannelModal.jsx'
 import { selectActiveChannel } from '../../slices/activeChannelSlice'
 
 const Channels = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   const { data: channels, isLoading: isGettingChannels } = useGetChannelsQuery()
-  const [addChannel, { isLoading: isAddingChannels}] = useAddChannelMutation()
+  const [addChannel, { isLoading: isAddingChannels }] = useAddChannelMutation()
   const activeChannel = useSelector(selectActiveChannel)
 
   useEffect(() => {
@@ -27,13 +27,12 @@ const Channels = () => {
     }
   }, [channels])
 
-
   const [showAdd, updateShowAdd] = useState(false)
 
   const handleAdd = value => addChannel(value)
 
   if (isGettingChannels || isAddingChannels) {
-    return <Spinner/>
+    return <Spinner />
   }
 
   return (
@@ -52,7 +51,7 @@ const Channels = () => {
         <AddChannelModal handleAdd={handleAdd} show={showAdd} updateShowAdd={() => updateShowAdd(false)} channels={channels.map(c => c.name)} />
         <ul id="channels-box" className="nav flex-column nav-pills nav-fill px-2 mb-3 overflow-auto h-100 d-block">
           {channels.map(channel => (
-            <Channel key={channel.id} channel={channel}/>
+            <Channel key={channel.id} channel={channel} />
           ))}
         </ul>
       </div>

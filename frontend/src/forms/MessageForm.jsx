@@ -1,14 +1,14 @@
-import { useTranslation } from "react-i18next"
-import { useSelector } from "react-redux"
-import { useState } from "react"
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
+import { useState } from 'react'
 import leoProfanity from 'leo-profanity'
 
-import { selectActiveChannel } from "../slices/activeChannelSlice"
+import { selectActiveChannel } from '../slices/activeChannelSlice'
 import { useAddMessageMutation } from '../api/messagesApi.js'
-import { selectUsername } from "../slices/authSlice.js"
+import { selectUsername } from '../slices/authSlice.js'
 
 const MessageForm = () => {
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const [text, setText] = useState('')
 
   const username = useSelector(selectUsername)
@@ -21,7 +21,7 @@ const MessageForm = () => {
     addMessage({
       body: cleanMessage,
       channelId: activeChannel.id,
-      username: username,})
+      username: username })
     setText('')
   }
 

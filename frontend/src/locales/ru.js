@@ -71,6 +71,6 @@ export default {
       channelCreated: 'Канал создан',
       channelRemoved: 'Канал удалён',
       channelRenamed: 'Канал переименован',
-    }
-  }
+    },
+  },
 }

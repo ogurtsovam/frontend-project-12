@@ -5,7 +5,7 @@ import { socket } from './sockets/sockets.js'
 
 export const channelsApi = createApi ({
   reducerPath: 'channels',
-  tagTypes: [ 'Channel' ],
+  tagTypes: ['Channel'],
   baseQuery: customBaseQuery(routes.channelsPath()),
   endpoints: builder => ({
     getChannels: builder.query({

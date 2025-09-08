@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route, useLocation, Link, Navigate } from 'react-router-dom'
-import { useSelector } from "react-redux"
+import { useSelector } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 import React from 'react'
 import { Provider, ErrorBoundary } from '@rollbar/react'
 
-import { selectToken } from "../slices/authSlice"
+import { selectToken } from '../slices/authSlice'
 import ChatPage from '../pages/ChatPage'
 import LoginPage from '../pages/LoginPage'
 import PageNotFound from '../pages/PageNotFound'
@@ -34,11 +34,11 @@ function App() {
                 </PrivateRoute>
               )}
             />
-            <Route path='/login' element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="*" element={<PageNotFound />} />
             <Route path="/signup" element={<SignupPage />} />
           </Routes>
-          <ToastContainer/>
+          <ToastContainer />
         </BrowserRouter>
       </ErrorBoundary>
     </Provider>

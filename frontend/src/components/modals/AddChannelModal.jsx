@@ -1,18 +1,18 @@
-import { useRef, useEffect } from "react"
+import { useRef, useEffect } from 'react'
 import { useFormik } from 'formik'
-import { useTranslation } from "react-i18next"
-import { useDispatch } from "react-redux"
+import { useTranslation } from 'react-i18next'
+import { useDispatch } from 'react-redux'
 import { Modal, FormGroup, FormControl } from 'react-bootstrap'
 import * as yup from 'yup'
 import { toast } from 'react-toastify'
 import leoProfanity from 'leo-profanity'
 
-import { validateChannels } from "../../validation/validation"
-import { setActive } from "../../slices/activeChannelSlice"
+import { validateChannels } from '../../validation/validation'
+import { setActive } from '../../slices/activeChannelSlice'
 
-const AddChannelModal = ({handleAdd, show, updateShowAdd, channels}) => {
+const AddChannelModal = ({ handleAdd, show, updateShowAdd, channels }) => {
   const inputRef = useRef(null)
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   useEffect(() => {
     if (inputRef.current) {
@@ -27,7 +27,7 @@ const AddChannelModal = ({handleAdd, show, updateShowAdd, channels}) => {
     validationSchema: yup.object({
       channel: validateChannels(channels, t),
     }),
-    onSubmit: async ( values) => {
+    onSubmit: async (values) => {
       try {
         const cleanChannelName = leoProfanity.clean(values.channel)
         const newChannel = await handleAdd({ name: cleanChannelName }).unwrap()
@@ -60,7 +60,7 @@ const AddChannelModal = ({handleAdd, show, updateShowAdd, channels}) => {
               id="channel"
               name="channel"
               type="text"
-              placeholder=''
+              placeholder=""
               ref={inputRef}
               value={formik.values.channel}
               isInvalid={formik.touched.channel && !!formik.errors.channel}

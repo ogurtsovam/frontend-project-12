@@ -1,11 +1,11 @@
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'react-i18next'
 import { Modal, FormGroup, FormControl } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
-import { useRemoveChannelMutation } from "../../api/channelsApi.js"
+import { useRemoveChannelMutation } from '../../api/channelsApi.js'
 
-const DeleteChannelModal = ({ show, updateShowRemove, channel}) => {
-  const {t} = useTranslation()
+const DeleteChannelModal = ({ show, updateShowRemove, channel }) => {
+  const { t } = useTranslation()
   const [removeChannel] = useRemoveChannelMutation()
 
   const handleSubmit = async (e) => {

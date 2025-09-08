@@ -1,8 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit"
-import authReducer from "../slices/authSlice"
-import activeChannelReducer from "../slices/activeChannelSlice"
+import { configureStore } from '@reduxjs/toolkit'
+import authReducer from '../slices/authSlice'
+import activeChannelReducer from '../slices/activeChannelSlice'
 import { channelsApi } from '../api/channelsApi.js'
-import { messagesApi } from "../api/messagesApi.js"
+import { messagesApi } from '../api/messagesApi.js'
 
 export const store = configureStore({
   reducer: {

@@ -22,4 +22,4 @@ const validateChannels = (channels, t) => {
     .notOneOf(channels, t('errors.notOneOf'))
 }
 
-export { getLoginSchema, validateChannels, getSignupSchema}
+export { getLoginSchema, validateChannels, getSignupSchema }

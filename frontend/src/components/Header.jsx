@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 
 const Header = ({ authButton }) => {
-  const {t} = useTranslation()
-  return(
+  const { t } = useTranslation()
+  return (
     <nav className="shadow-sm navbar navbar-expand-lg navbar-light bg-white">
       <div className="container">
         <a className="navbar-brand" href="/">{t('header.nav')}</a>

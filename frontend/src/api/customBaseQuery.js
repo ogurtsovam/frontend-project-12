@@ -12,5 +12,4 @@ const customBaseQuery = baseUrl =>
     },
   })
 
-
 export default customBaseQuery

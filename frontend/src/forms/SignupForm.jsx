@@ -4,13 +4,13 @@ import { useEffect, useRef } from 'react'
 import { useFormik } from 'formik'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useDispatch } from "react-redux"
+import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import leoProfanity from 'leo-profanity'
 
-import { setAuth } from "../slices/authSlice"
-import routes from "../routes/routes"
-import { getSignupSchema } from "../validation/validation"
+import { setAuth } from '../slices/authSlice'
+import routes from '../routes/routes'
+import { getSignupSchema } from '../validation/validation'
 
 const SignupForm = () => {
   const { t } = useTranslation()
@@ -24,9 +24,9 @@ const SignupForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: "",
-      password: "",
-      confirmPassword: "",
+      username: '',
+      password: '',
+      confirmPassword: '',
     },
     validationSchema: getSignupSchema(t),
     onSubmit: async (values) => {
@@ -35,7 +35,7 @@ const SignupForm = () => {
           toast.error(t('errors.badName'))
           return
         }
-        const res = await axios.post(routes.signupPath(), {username: values.username, password: values.password})
+        const res = await axios.post(routes.signupPath(), { username: values.username, password: values.password })
         const { token, username } = res.data
         dispatch(setAuth({ token, username }))
 

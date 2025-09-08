@@ -4,11 +4,11 @@ import { useEffect, useRef } from 'react'
 import { useFormik } from 'formik'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useDispatch } from "react-redux"
+import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 
-import { setAuth } from "../slices/authSlice"
-import {getLoginSchema} from '../validation/validation.js'
+import { setAuth } from '../slices/authSlice'
+import { getLoginSchema } from '../validation/validation.js'
 import routes from '../routes/routes.js'
 
 const LoginForm = () => {
@@ -23,8 +23,8 @@ const LoginForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: "",
-      password: "",
+      username: '',
+      password: '',
     },
     validationSchema: getLoginSchema(t),
     onSubmit: async (values) => {
@@ -43,7 +43,7 @@ const LoginForm = () => {
           formik.setFieldError('password', t('errors.usernameOrPasswordIsIncorrect'))
           return
         }
-        if (err.isAxiosError ) {
+        if (err.isAxiosError) {
           inputRef.current.select()
           return
         }

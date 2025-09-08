@@ -5,7 +5,7 @@ import { socket } from './sockets/sockets.js'
 
 export const messagesApi = createApi ({
   reducerPath: 'messages',
-  tagTypes: [ 'Message' ],
+  tagTypes: ['Message'],
   baseQuery: customBaseQuery(routes.messagesPath()),
   endpoints: builder => ({
     getMessages: builder.query({
@@ -56,7 +56,7 @@ export const messagesApi = createApi ({
       invalidatesTags: ['Message'],
     }),
     renameMessage: builder.mutation({
-      query: ({id, message}) => ({
+      query: ({ id, message }) => ({
         url: id,
         method: 'PATCH',
         body: message,

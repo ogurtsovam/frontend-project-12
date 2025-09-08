@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next'
 import DeleteChannelModal from '../modals/DeleteChannelModal'
 import RenameChannelModal from '../modals/RenameChannelModal'
 
-const ChannelMenu = ({classForButtons, modals, channel }) => {
-  const {t} = useTranslation()
+const ChannelMenu = ({ classForButtons, modals, channel }) => {
+  const { t } = useTranslation()
 
   const { showRename, updateShowRename, showRemove, updateShowRemove } = modals
   return (
