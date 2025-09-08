@@ -78,6 +78,7 @@ return (
             {formik.touched.channel && formik.errors.channel ? (
               <div className="text-danger mt-1">{formik.errors.channel}</div>
             ) : null}
+            <label class="visually-hidden" htmlFor="name">{t('modals.channelName')}</label>
           </FormGroup>
         </Modal.Body>
 
