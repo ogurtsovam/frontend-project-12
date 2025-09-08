@@ -29,11 +29,8 @@ const AddChannelModal = ({handleAdd, show, updateShowAdd, channels}) => {
      }),
     onSubmit: async ( values) => { 
       try {
-        if (leoProfanity.check(values.channel)) {
-          toast.error(t('errors.badName'))
-          return;
-        }
-        const newChannel = await handleAdd({ name: values.channel }).unwrap();
+        const cleanChannelName = leoProfanity.clean(values.channel);
+        const newChannel = await handleAdd({ name: cleanChannelName }).unwrap();
         dispatch(setActive(newChannel));
         toast.success(t('toast.channelCreated'))
         updateShowAdd();

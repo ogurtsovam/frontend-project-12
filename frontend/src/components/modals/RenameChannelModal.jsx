@@ -34,13 +34,10 @@ const RenameChannelModal = ({show, updateShowRename, channel}) => {
     }),
       onSubmit: async (values) => {
       try {
-        if (leoProfanity.check(values.channel)) {
-          toast.error(t('errors.badName'))
-          return;
-        }
+        const cleanChannelName = leoProfanity.clean(values.channel);
         const newChannel = await renameChannel({
         id: channel.id,
-        channel: { name: values.channel }
+        channel: { name: cleanChannelName }
         }).unwrap();
         dispatch(setActive(newChannel));
         toast.success(t('toast.channelRenamed'));
