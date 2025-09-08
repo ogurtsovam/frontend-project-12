@@ -5,7 +5,7 @@ install:
 	cd frontend && npm ci
 
 start-frontend:
-	make -C frontend start
+	cd frontend && npm run start
 
 start-backend:
 	npx start-server -s ./frontend/dist
@@ -20,5 +20,4 @@ develop:
 	make start-backend & make start-frontend
 
 build:
-	rm -rf frontend/dist
-	npm run build
+	cd frontend && npm ci && npm run build
