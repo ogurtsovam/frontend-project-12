@@ -1,4 +1,4 @@
-import { Dropdown, ButtonGroup  } from 'react-bootstrap'
+import { Dropdown, ButtonGroup } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 
 import DeleteChannelModal from '../modals/DeleteChannelModal'
