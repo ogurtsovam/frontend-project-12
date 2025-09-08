@@ -40,17 +40,21 @@ const Messages = () => {
             <Message key={message.id} message={message} />
           ))}
         </div>
-        <div className="mt-auto px-5 py-3" >
+        <div className="mt-auto px-5 py-3">
           <div className="justify-content-end align-items-end position-relative d-flex ">
-            <img src={image} className="rounded-circle" alt="cat" style={{
-              width: '300px',
-              height: 'auto',
-              maxWidth: '80%',
-              pointerEvents: 'none',
-              position: 'absolute',
-              opacity: 0.6,
-              zIndex: 0,
-            }}
+            <img
+              src={image}
+              className="rounded-circle"
+              alt="cat"
+              style={{
+                width: '300px',
+                height: 'auto',
+                maxWidth: '80%',
+                pointerEvents: 'none',
+                position: 'absolute',
+                opacity: 0.6,
+                zIndex: 0,
+              }}
             >
             </img>
           </div>

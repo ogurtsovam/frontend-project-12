@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Modal, FormGroup, FormControl } from 'react-bootstrap'
+import { Modal, FormGroup } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
 import { useRemoveChannelMutation } from '../../api/channelsApi.js'

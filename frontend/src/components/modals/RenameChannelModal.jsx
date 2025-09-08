@@ -61,7 +61,7 @@ const RenameChannelModal = ({ show, updateShowRename, channel }) => {
 
         <Modal.Body>
           <FormGroup>
-            <label class="visually-hidden" htmlFor="channel">{t('modals.channelName')}</label>
+            <label className="visually-hidden" htmlFor="channel">{t('modals.channelName')}</label>
             <FormControl
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -74,9 +74,11 @@ const RenameChannelModal = ({ show, updateShowRename, channel }) => {
               isInvalid={formik.touched.channel && !!formik.errors.channel}
               data-testid="input-body"
             />
-            {formik.touched.channel && formik.errors.channel ? (
-              <div className="text-danger mt-1">{formik.errors.channel}</div>
-            ) : null}
+            {formik.touched.channel && formik.errors.channel
+              ? (
+                <div className="text-danger mt-1">{formik.errors.channel}</div>
+              )
+              : null}
           </FormGroup>
         </Modal.Body>
 

@@ -1,7 +1,6 @@
-import { BrowserRouter, Routes, Route, useLocation, Link, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
-import React from 'react'
 import { Provider, ErrorBoundary } from '@rollbar/react'
 
 import { selectToken } from '../slices/authSlice'

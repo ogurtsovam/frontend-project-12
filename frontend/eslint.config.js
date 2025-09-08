@@ -3,6 +3,7 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import stylistic from '@stylistic/eslint-plugin'
+import functional from 'eslint-plugin-functional'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
@@ -16,6 +17,7 @@ export default defineConfig([
     ],
     plugins: {
       '@stylistic': stylistic,
+      functional,
     },
     languageOptions: {
       ecmaVersion: 2020,
@@ -45,8 +47,14 @@ export default defineConfig([
       '@stylistic/space-in-parens': ['error', 'never'],
       '@stylistic/space-infix-ops': 'error',
       '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'single-child' }],
-      '@stylistic/jsx-tag-spacing': ['error', { beforeSelfClosing: 'always' }],
+      '@stylistic/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
+      '@stylistic/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
+      '@stylistic/jsx-tag-spacing': ['error', { beforeClosing: 'never', afterOpening: 'never' }],
       '@stylistic/jsx-closing-bracket-location': ['error', 'line-aligned'],
+      '@stylistic/arrow-spacing': ['error', { before: true, after: true }],
+      '@stylistic/multiline-ternary': ['error', 'always-multiline'],
+      '@stylistic/padded-blocks': ['error', 'never'],
+      '@stylistic/no-multiple-empty-lines': ['error', { max: 1 }],
     },
   },
 ])

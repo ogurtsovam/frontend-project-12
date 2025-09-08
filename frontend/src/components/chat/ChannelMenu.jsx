@@ -15,10 +15,10 @@ const ChannelMenu = ({ classForButtons, modals, channel }) => {
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item tabIndex="0" onClick={()=> updateShowRename(true)} href="#">{t('modals.rename')}</Dropdown.Item>
-        <RenameChannelModal show={showRename} updateShowRename={()=> updateShowRename(false)} channel={channel} />
-        <Dropdown.Item tabIndex="0" onClick={()=> updateShowRemove(true)} href="#">{t('modals.delete')}</Dropdown.Item>
-        <DeleteChannelModal show={showRemove} updateShowRemove={()=> updateShowRemove(false)} channel={channel} />
+        <Dropdown.Item tabIndex="0" onClick={() => updateShowRename(true)} href="#">{t('modals.rename')}</Dropdown.Item>
+        <RenameChannelModal show={showRename} updateShowRename={() => updateShowRename(false)} channel={channel} />
+        <Dropdown.Item tabIndex="0" onClick={() => updateShowRemove(true)} href="#">{t('modals.delete')}</Dropdown.Item>
+        <DeleteChannelModal show={showRemove} updateShowRemove={() => updateShowRemove(false)} channel={channel} />
       </Dropdown.Menu>
     </Dropdown>
   )
