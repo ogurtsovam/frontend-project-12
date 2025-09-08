@@ -37,7 +37,7 @@ return (
           <button className="btn btn-primary" type="button" value="cancel" onClick={updateShowRemove}>
             {t('modals.cancel')}
           </button>
-          <button className="btn btn-primary" type="submit" value="submit">
+          <button className="btn btn-danger" type="submit" value="submit">
             {t('modals.delete')}
           </button>
         </Modal.Footer>
