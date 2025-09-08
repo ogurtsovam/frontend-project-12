@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 
 const Header = ({ authButton }) => {
   const {t} = useTranslation()
@@ -14,4 +14,4 @@ const Header = ({ authButton }) => {
   )
 }
 
-export default Header;
+export default Header

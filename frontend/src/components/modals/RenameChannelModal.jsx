@@ -1,57 +1,58 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react"
 import { useFormik } from 'formik'
-import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next"
+import { useDispatch } from "react-redux"
 import { Modal, FormGroup, FormControl } from 'react-bootstrap'
-import * as yup from 'yup';
-import { toast } from 'react-toastify';
-import leoProfanity from 'leo-profanity';
+import * as yup from 'yup'
+import { toast } from 'react-toastify'
+import leoProfanity from 'leo-profanity'
 
-import { validateChannels } from "../../validation/validation";
-import { useGetChannelsQuery } from '../../api/channelsApi.js';
-import { useRenameChannelMutation } from "../../api/channelsApi.js";
-import { setActive } from "../../slices/activeChannelSlice";
+import { validateChannels } from "../../validation/validation"
+import { useGetChannelsQuery } from '../../api/channelsApi.js'
+import { useRenameChannelMutation } from "../../api/channelsApi.js"
+import { setActive } from "../../slices/activeChannelSlice"
 
 const RenameChannelModal = ({show, updateShowRename, channel}) => {
-  const inputRef = useRef(null);
+  const inputRef = useRef(null)
   const {t} = useTranslation()
   const dispatch = useDispatch()
   const { data: channels } = useGetChannelsQuery()
-  const [renameChannel] = useRenameChannelMutation();
+  const [renameChannel] = useRenameChannelMutation()
 
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current.focus()
     }
-  }, [show]);
+  }, [show])
 
-   const formik = useFormik({
-     initialValues: {
-       channel: '',
-     },
-      validationSchema: yup.object({
+  const formik = useFormik({
+    initialValues: {
+      channel: '',
+    },
+    validationSchema: yup.object({
       channel: validateChannels(channels, t),
     }),
-      onSubmit: async (values) => {
+    onSubmit: async (values) => {
       try {
-        const cleanChannelName = leoProfanity.clean(values.channel);
+        const cleanChannelName = leoProfanity.clean(values.channel)
         const newChannel = await renameChannel({
-        id: channel.id,
-        channel: { name: cleanChannelName }
-        }).unwrap();
-        dispatch(setActive(newChannel));
-        toast.success(t('toast.channelRenamed'));
-        updateShowRename();
-        formik.resetForm();
-      } catch (err) {
-        if (!err.response) {
-          toast.error(t('errors.connectionError'));
-        }
-        toast.error(t('errors.renameChannelError'));
+          id: channel.id,
+          channel: { name: cleanChannelName }
+        }).unwrap()
+        dispatch(setActive(newChannel))
+        toast.success(t('toast.channelRenamed'))
+        updateShowRename()
+        formik.resetForm()
       }
-     },
-   });
-return (
+      catch (err) {
+        if (!err.response) {
+          toast.error(t('errors.connectionError'))
+        }
+        toast.error(t('errors.renameChannelError'))
+      }
+    },
+  })
+  return (
     <Modal show={show} onHide={updateShowRename}>
       <form onSubmit={formik.handleSubmit}>
         <Modal.Header closeButton>
@@ -61,7 +62,7 @@ return (
         <Modal.Body>
           <FormGroup>
             <label class="visually-hidden" htmlFor="channel">{t('modals.channelName')}</label>
-           <FormControl
+            <FormControl
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               id="channel"
@@ -89,7 +90,7 @@ return (
         </Modal.Footer>
       </form>
     </Modal>
-  );
+  )
 }
 
-export default RenameChannelModal;
+export default RenameChannelModal

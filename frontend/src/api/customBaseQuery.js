@@ -1,16 +1,16 @@
-import { fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const customBaseQuery = (baseUrl) =>
+const customBaseQuery = baseUrl =>
   fetchBaseQuery({
     baseUrl,
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.token;
+      const token = getState().auth.token
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
+        headers.set('Authorization', `Bearer ${token}`)
       }
-      return headers;
+      return headers
     },
-  });
+  })
 
 
-export default customBaseQuery;
+export default customBaseQuery

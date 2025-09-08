@@ -1,49 +1,50 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react"
 import { useFormik } from 'formik'
-import { useTranslation } from "react-i18next";
-import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next"
+import { useDispatch } from "react-redux"
 import { Modal, FormGroup, FormControl } from 'react-bootstrap'
-import * as yup from 'yup'; 
-import { toast } from 'react-toastify';
-import leoProfanity from 'leo-profanity';
+import * as yup from 'yup'
+import { toast } from 'react-toastify'
+import leoProfanity from 'leo-profanity'
 
-import { validateChannels } from "../../validation/validation";
-import { setActive } from "../../slices/activeChannelSlice";
+import { validateChannels } from "../../validation/validation"
+import { setActive } from "../../slices/activeChannelSlice"
 
 const AddChannelModal = ({handleAdd, show, updateShowAdd, channels}) => {
-  const inputRef = useRef(null); 
-  const {t} = useTranslation() 
+  const inputRef = useRef(null)
+  const {t} = useTranslation()
   const dispatch = useDispatch()
   useEffect(() => {
     if (inputRef.current) {
-      inputRef.current.focus();
+      inputRef.current.focus()
     }
-  }, [show]);
+  }, [show])
 
-  const formik = useFormik({ 
-    initialValues: { 
+  const formik = useFormik({
+    initialValues: {
       channel: '',
-    }, 
-    validationSchema: yup.object({ 
+    },
+    validationSchema: yup.object({
       channel: validateChannels(channels, t),
-     }),
-    onSubmit: async ( values) => { 
+    }),
+    onSubmit: async ( values) => {
       try {
-        const cleanChannelName = leoProfanity.clean(values.channel);
-        const newChannel = await handleAdd({ name: cleanChannelName }).unwrap();
-        dispatch(setActive(newChannel));
+        const cleanChannelName = leoProfanity.clean(values.channel)
+        const newChannel = await handleAdd({ name: cleanChannelName }).unwrap()
+        dispatch(setActive(newChannel))
         toast.success(t('toast.channelCreated'))
-        updateShowAdd();
-        formik.resetForm(); 
-      } catch (err) {
+        updateShowAdd()
+        formik.resetForm()
+      }
+      catch (err) {
         if (!err.response) {
-          toast.error(t('errors.connectionError'));
+          toast.error(t('errors.connectionError'))
         }
-        toast.error(t('errors.addChannelError'));
+        toast.error(t('errors.addChannelError'))
       }
     },
-  });
-return (
+  })
+  return (
     <Modal show={show} onHide={updateShowAdd}>
       <form onSubmit={formik.handleSubmit}>
         <Modal.Header closeButton>
@@ -53,7 +54,7 @@ return (
         <Modal.Body>
           <FormGroup>
             <label class="visually-hidden" htmlFor="channel">{t('modals.channelName')}</label>
-           <FormControl
+            <FormControl
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               id="channel"
@@ -81,7 +82,7 @@ return (
         </Modal.Footer>
       </form>
     </Modal>
-  );
+  )
 }
 
-export default AddChannelModal;
+export default AddChannelModal

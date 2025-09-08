@@ -1,14 +1,14 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'
 
-import image from '../assets/sleepyCat.jpg';
-import Header from '../components/Header';
-import AuthButton from '../components/AuthButton';
+import image from '../assets/sleepyCat.jpg'
+import Header from '../components/Header'
+import AuthButton from '../components/AuthButton'
 
 const PageNotFound = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   return(
-   <div className="h-100">
+    <div className="h-100">
       <div className="h-100" id="chat">
         <div className="d-flex flex-column h-100">
           <Header authButton={AuthButton} />
@@ -23,6 +23,6 @@ const PageNotFound = () => {
       </div>
     </div>
   )
-};
+}
 
-export default PageNotFound;
+export default PageNotFound

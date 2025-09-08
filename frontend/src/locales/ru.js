@@ -17,7 +17,7 @@ export default {
     notFound: {
       pageNotFound: 'Страница не найдена',
       link: 'Но вы можете перейти',
-      toMainPage: 'на главную страницу', 
+      toMainPage: 'на главную страницу',
     },
     channels: {
       title: 'Каналы',
@@ -32,7 +32,7 @@ export default {
       send: 'Отправить',
       newMessage: 'Новое сообщение',
       textInInput: 'Введите сообщение...',
-    }, 
+    },
     modals: {
       addTitle: 'Добавить канал',
       renameTitle: 'Переименовать канал',
@@ -64,7 +64,7 @@ export default {
       username: 'Имя пользователя',
       password: 'Пароль',
       confirmPassword: 'Подтвердите пароль',
-      submit: 'Зарегистрироваться', 
+      submit: 'Зарегистрироваться',
       userExists: 'Такой пользователь уже существует',
     },
     toast: {
@@ -73,4 +73,4 @@ export default {
       channelRenamed: 'Канал переименован',
     }
   }
-};
+}

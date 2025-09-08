@@ -1,4 +1,4 @@
-const api = '/api/v1';
+const api = '/api/v1'
 
 export default {
   loginPage: `/login`,
