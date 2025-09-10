@@ -68,8 +68,8 @@ const AddChannelModal = ({ handleAdd, show, updateShowAdd, channels }) => {
             />
             {formik.touched.channel && formik.errors.channel
               ? (
-                  <div className="text-danger mt-1">{formik.errors.channel}</div>
-                )
+                <div className="text-danger mt-1">{formik.errors.channel}</div>
+              )
               : null}
           </FormGroup>
         </Modal.Body>

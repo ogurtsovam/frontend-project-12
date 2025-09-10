@@ -19,15 +19,15 @@ const RenameChannelModal = ({ show, updateShowRename, channel }) => {
   const { data: channels } = useGetChannelsQuery()
   const [renameChannel] = useRenameChannelMutation()
   useEffect(() => {
-      if (inputRef.current) {
-        inputRef.current.focus()
-      }
-    }, [show])
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [show])
 
   const channelsNames = channels.map(c => c.name)
 
   const formik = useFormik({
-    enableReinitialize: true, 
+    enableReinitialize: true,
     initialValues: {
       channel: channel.name,
     },
@@ -78,8 +78,8 @@ const RenameChannelModal = ({ show, updateShowRename, channel }) => {
             />
             {formik.touched.channel && formik.errors.channel
               ? (
-                  <div className="text-danger mt-1">{formik.errors.channel}</div>
-                )
+                <div className="text-danger mt-1">{formik.errors.channel}</div>
+              )
               : null}
           </FormGroup>
         </Modal.Body>

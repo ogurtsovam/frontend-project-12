@@ -20,21 +20,21 @@ const MessageForm = () => {
     if (inputRef.current) {
       inputRef.current.focus()
     }
-  }, [text, activeChannel]) 
+  }, [text, activeChannel])
 
-const handleSubmit = async (event, value) => {
-  event.preventDefault();
-  const cleanMessage = leoProfanity.clean(value);
-  await addMessage({
-    body: cleanMessage,
-    channelId: activeChannel.id,
-    username,
-  });
-  setText('');
-  if (inputRef.current) {
-    inputRef.current.focus();
+  const handleSubmit = async (event, value) => {
+    event.preventDefault()
+    const cleanMessage = leoProfanity.clean(value)
+    await addMessage({
+      body: cleanMessage,
+      channelId: activeChannel.id,
+      username,
+    })
+    setText('')
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
   }
-};
 
   if (isAddingMessage) {
     return
