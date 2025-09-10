@@ -78,8 +78,8 @@ const RenameChannelModal = ({ show, updateShowRename, channel }) => {
             />
             {formik.touched.channel && formik.errors.channel
               ? (
-                <div className="text-danger mt-1">{formik.errors.channel}</div>
-              )
+                  <div className="text-danger mt-1">{formik.errors.channel}</div>
+                )
               : null}
           </FormGroup>
         </Modal.Body>
