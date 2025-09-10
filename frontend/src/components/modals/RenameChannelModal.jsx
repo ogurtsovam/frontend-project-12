@@ -18,19 +18,21 @@ const RenameChannelModal = ({ show, updateShowRename, channel }) => {
   const dispatch = useDispatch()
   const { data: channels } = useGetChannelsQuery()
   const [renameChannel] = useRenameChannelMutation()
-
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus()
-    }
-  }, [show])
+      if (inputRef.current) {
+        inputRef.current.focus()
+      }
+    }, [show])
+
+  const channelsNames = channels.map(c => c.name)
 
   const formik = useFormik({
+    enableReinitialize: true, 
     initialValues: {
-      channel: '',
+      channel: channel.name,
     },
     validationSchema: yup.object({
-      channel: validateChannels(channels, t),
+      channel: validateChannels(channelsNames, t),
     }),
     onSubmit: async (values) => {
       try {

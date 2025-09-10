@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
+import { useEffect, useRef } from 'react'
 
 import Message from './Message'
 import Spinner from '../Spinner.jsx'
@@ -12,12 +13,15 @@ const Messages = () => {
   const { t } = useTranslation()
   const activeChannel = useSelector(selectActiveChannel)
   const { data: messages = [], isLoading } = useGetMessagesQuery()
+  const messagesEndRef  = useRef(null);
 
-  if (!activeChannel) {
-    return ''
-  }
-
-  const activeChannelMessages = messages.filter(message => message.channelId === activeChannel.id)
+  const activeChannelMessages = activeChannel?  messages.filter(message => message.channelId === activeChannel.id): null;
+  
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [activeChannelMessages, activeChannel.id])
 
   if (isLoading) {
     return <Spinner />
@@ -35,13 +39,23 @@ const Messages = () => {
           </p>
           <span className="text-muted">{t('messages.count', { count: activeChannelMessages.length })}</span>
         </div>
-        <div id="messages-box" className="chat-messages overflow-auto px-5" style={{ zIndex: 1 }}>
+        <div id="messages-box" className="chat-messages overflow-auto px-5">
           {activeChannelMessages.map(message => (
             <Message key={message.id} message={message} />
           ))}
+          <div ref={messagesEndRef}></div>
         </div>
-        <div className="mt-auto px-5 py-3">
-          <div className="justify-content-end align-items-end position-relative d-flex ">
+        <div className="mt-auto px-5 py-3"> 
+          <MessageForm />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default Messages
+
+/* <div className="justify-content-end align-items-end position-relative d-flex ">
             <img
               src={image}
               className="rounded-circle"
@@ -58,11 +72,4 @@ const Messages = () => {
             >
             </img>
           </div>
-          <MessageForm />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export default Messages
+*/

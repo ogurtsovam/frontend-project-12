@@ -19,7 +19,7 @@ const SignupPage = () => {
                 <div className="card shadow-sm">
                   <div className="card-body d-flex flex-column flex-md-row justify-content-around align-items-center p-5">
                     <div>
-                      <img src={image} className="rounded-circle" style={{ width: '250px', height: 'auto' }} alt={t('signup.title')}></img>
+                      <img src={image} className="rounded-circle img-fluid w-75" alt={t('signup.title')}></img>
                     </div>
                     <SignupForm />
                   </div>

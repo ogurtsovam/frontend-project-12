@@ -61,7 +61,6 @@ const SignupForm = () => {
       <div className="form-floating mb-3">
         <input
           name="username"
-          autoComplete="username"
           required=""
           id="username"
           className={`form-control ${formik.touched.username && formik.errors.username ? 'is-invalid' : ''}`}
@@ -80,7 +79,6 @@ const SignupForm = () => {
           name="password"
           aria-describedby="passwordHelpBlock"
           required=""
-          autoComplete="new-password"
           type="password"
           id="password"
           className={`form-control ${formik.touched.password && formik.errors.password ? 'is-invalid' : ''}`}
@@ -97,7 +95,6 @@ const SignupForm = () => {
         <input
           name="confirmPassword"
           required=""
-          autoComplete="new-password"
           type="password"
           id="confirmPassword"
           className={`form-control ${formik.touched.confirmPassword && formik.errors.confirmPassword ? 'is-invalid' : ''}`}

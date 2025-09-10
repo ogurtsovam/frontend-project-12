@@ -57,7 +57,6 @@ const LoginForm = () => {
       <div className="form-floating mb-3">
         <input
           name="username"
-          autoComplete="username"
           placeholder="Ваш ник"
           id="username"
           className={`form-control ${formik.touched.username && formik.errors.username ? 'is-invalid' : ''}`}
@@ -75,7 +74,6 @@ const LoginForm = () => {
       <div className="form-floating mb-4">
         <input
           name="password"
-          autoComplete="current-password"
           placeholder="Пароль"
           type="password"
           id="password"

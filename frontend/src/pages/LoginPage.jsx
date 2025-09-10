@@ -20,7 +20,7 @@ const LoginPage = () => {
                 <div className="card shadow-sm">
                   <div className="card-body row p-5">
                     <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
-                      <img src={image} className="rounded-circle" alt="Войти" style={{ width: '300px', height: 'auto' }}></img>
+                      <img src={image} className="rounded-circle img-fluid" alt="Войти"></img>
                     </div>
                     <LoginForm />
                   </div>
