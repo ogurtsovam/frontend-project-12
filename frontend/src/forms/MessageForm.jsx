@@ -17,10 +17,8 @@ const MessageForm = () => {
   const [addMessage, { isLoading: isAddingMessage }] = useAddMessageMutation()
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus()
-    }
-  }, [text, activeChannel])
+    setTimeout(() => inputRef.current?.focus(), 0)
+  }, [text, activeChannel.name])
 
   const handleSubmit = async (event, value) => {
     event.preventDefault()

@@ -18,7 +18,7 @@ const Channel = ({ channel }) => {
   const [showRename, updateShowRename] = useState(false)
   const [showRemove, updateShowRemove] = useState(false)
 
-  const classForChannels = activeChannel?.id === id ? 'w-100 rounded-0 text-start btn btn-secondary' : 'w-100 rounded-0 text-start btn'
+  const classForChannels = activeChannel?.id === id ? 'w-100 rounded-0 overflow-hidden d-flex align-items-center text-start btn btn-secondary' : 'w-100 rounded-0 overflow-hidden d-flex align-items-center text-start btn'
   const classForButtons = activeChannel?.id === id ? 'flex-grow-0 dropdown-toggle dropdown-toggle-split btn btn-secondary' : 'flex-grow-0 dropdown-toggle dropdown-toggle-split btn'
 
   if (removable) {
@@ -26,8 +26,10 @@ const Channel = ({ channel }) => {
       <li className="nav-item w-100" key={id} onClick={handleChannelChange}>
         <div role="group" className="d-flex dropdown btn-group">
           <button type="button" className={classForChannels}>
-            <span className=""># </span>
-            {name}
+            <span className="me-1">#</span>
+            <span className="flex-grow-1 text-truncate min-w-0">
+              {name}
+            </span>
           </button>
           <ChannelMenu
             classForButtons={classForButtons}
@@ -45,7 +47,9 @@ const Channel = ({ channel }) => {
     <li className="nav-item w-100" key={id} onClick={handleChannelChange}>
       <button type="button" className={classForChannels}>
         <span className="me-1">#</span>
-        {name}
+        <span className="flex-grow-1 text-truncate min-w-0">
+          {name}
+        </span>
       </button>
     </li>
   )
