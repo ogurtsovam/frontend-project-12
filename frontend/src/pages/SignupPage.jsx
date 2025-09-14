@@ -18,7 +18,7 @@ const SignupPage = () => {
               <div className="col-12 col-md-8 col-xxl-6">
                 <div className="card shadow-sm">
                   <div className="card-body d-flex flex-column flex-md-row justify-content-around align-items-center p-5">
-                    <div>
+                    <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
                       <img src={image} className="rounded-circle img-fluid w-75" alt={t('signup.title')}></img>
                     </div>
                     <SignupForm />

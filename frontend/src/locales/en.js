@@ -1,0 +1,77 @@
+export default {
+  translation: {
+    header: {
+      nav: 'Hexlet Chat',
+      logIn: 'Log In',
+      logOut: 'Log Out',
+    },
+    login: {
+      form: {
+        title: 'Log In',
+        username: 'Username',
+        password: 'Password',
+      },
+      noAccount: 'No account?',
+      registration: 'Sign up',
+    },
+    notFound: {
+      pageNotFound: 'Page not found',
+      link: 'But you can go back',
+      toMainPage: 'to the main page',
+    },
+    channels: {
+      title: 'Channels',
+      channelControl: 'Channel control',
+    },
+    messages: {
+      count_zero: '{{count}} messages',
+      count_one: '{{count}} message',
+      count_many: '{{count}} messages',
+      send: 'Send',
+      newMessage: 'New Message',
+      textInInput: 'Enter your message...',
+    },
+    modals: {
+      addTitle: 'Add channel',
+      renameTitle: 'Rename channel',
+      channelName: 'Channel name',
+      cancel: 'Cancel',
+      send: 'send',
+      deleteTitle: 'Delete channel',
+      confirmation: 'Are you sure?',
+      delete: 'Delete',
+      rename: 'Rename',
+    },
+    errors: {
+      tooShort: 'From 3 to 20 characters',
+      tooLong: 'From 3 to 20 characters',
+      required: 'Required field',
+      notOneOf: 'Must be unique',
+      passwordsMustMatch: 'Passwords must match',
+      minSymbols: 'At least 6 characters',
+      usernameOrPasswordIsIncorrect: 'Incorrect username or password',
+      connectionError: 'Connection error',
+      removeChannelError: 'Error removing channel',
+      renameChannelError: 'Error renaming channel',
+      addChannelError: 'Error adding channel',
+      badName: 'Bad name',
+    },
+    signup: {
+      title: 'Sign up',
+      username: 'Username',
+      password: 'Password',
+      confirmPassword: 'Password confirmation',
+      submit: 'Submit',
+      userExists: 'This user already exists',
+    },
+    toast: {
+      channelCreated: 'Channel has been made',
+      channelRemoved: 'Channel has been removed',
+      channelRenamed: 'Channel has been renamed',
+    },
+    languages: {
+      russian: 'Russian',
+      english: 'English',
+    },
+  },
+}

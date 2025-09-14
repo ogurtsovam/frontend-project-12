@@ -11,12 +11,14 @@ import './App.css'
 
 const init = async () => {
   const i18n = i18next.createInstance()
+  const defaultLang = store.getState().languages.mainLanguage
 
   await i18n
     .use(initReactI18next)
     .init({
       resources,
       fallbackLng: 'ru',
+      lng: defaultLang,
     })
 
   return (

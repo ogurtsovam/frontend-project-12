@@ -72,5 +72,9 @@ export default {
       channelRemoved: 'Канал удалён',
       channelRenamed: 'Канал переименован',
     },
+    languages: {
+      russian: 'Русский язык',
+      english: 'Английский',
+    },
   },
 }
