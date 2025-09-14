@@ -11,6 +11,8 @@
 
 #### Cozy chat app, a simplified copy of famous Slack app. Chat with friends and create your own channels, but with a cute twist: adorable cats appear in the app to brighten your day. 🐾
 
+⚠️ **Note:** This is a **learning project**. The backend is provided by [`@hexlet/chat-server`](https://www.npmjs.com/package/@hexlet/chat-server).
+
 ### App deploy
 https://frontend-project-12-1-rlho.onrender.com
 
